@@ -1,14 +1,20 @@
 {
   "name": "express-revision",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "author": "",
   "license": "MIT",
-  "description": "",
+  "description": "This project is a structured 3-day revision of Express.js fundamentals, covering core concepts like server setup, routing, middleware, validation, file uploads, authentication, and MongoDB integration, with practice projects included.",
   "dependencies": {
+    "dotenv": "^17.2.1",
     "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
   }
 }
