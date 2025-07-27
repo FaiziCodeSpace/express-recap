@@ -3,7 +3,7 @@ import { Router } from "express";
 const router = Router();
 
 router.get('/', (req, res)=>{
-    res.send('<h1>HOME</h1>')
+    res.send('<h1>Middleware test is successful!</h1>')
 });
 
 router.post('/data', (req, res)=>{
