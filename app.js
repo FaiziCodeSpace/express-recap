@@ -1,6 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
-import userRoutes from "./routes/router.js"
+import userRoutes from "./routes/router.js";
 
 dotenv.config();
 
@@ -9,13 +9,13 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-
+     
 app.use((req, res, next)=>{
     console.log(`${req.method} ${req.url}`);
     next();
 });
 
-app.use('/', userRoutes);
+app.use('/api/users', userRoutes); 
 
 app.use((err, req, res, next)=>{
     console.error(err.stack);
