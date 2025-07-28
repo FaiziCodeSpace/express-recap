@@ -1,21 +1,14 @@
 import { Router } from "express";
+import { deleteUsers, getUsers, postUsers, putUsers } from "../controllers/userController.js";
 
 const router = Router();
 
-router.get('/', (req, res)=>{
-    res.send('<h1>Middleware test is successful!</h1>')
-});
+router.get('/:id', getUsers);
 
-router.post('/data', (req, res)=>{
-    res.send('<h1>Data</h1>')
-});
+router.post('/data', postUsers);
 
-router.put('/data/:id', (req, res)=>{
-    res.send(`<h1>User:${req.params.id}</h1>`)
-});
+router.put('/data/:id', putUsers);
 
-router.delete('/data/:id', (req, res)=>{
-    res.send(`<h1>User Deleted: ${req.params.id}</h1>`)
-});
+router.delete('/data/:id', deleteUsers);
 
 export default router;
