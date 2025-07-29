@@ -1,6 +1,8 @@
 import express from "express";
 import dotenv from "dotenv";
 import userRoutes from "./routes/router.js";
+import { loggerMiddleware } from "./middleware/loggerMiddleware.js";
+import userRouter from "./routes/users.js";
 
 dotenv.config();
 
@@ -10,15 +12,13 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
      
-app.use((req, res, next)=>{
-    console.log(`${req.method} ${req.url}`);
-    next();
-});
+app.use(loggerMiddleware);
 
+app.use('/', userRouter);
 app.use('/api/users', userRoutes); 
 
 app.use((err, req, res, next)=>{
-    console.error(err.stack);
+    console.error('Error:', err.message);
     res.status(500).json({error: 'Something went wrong!'});
 });
 
