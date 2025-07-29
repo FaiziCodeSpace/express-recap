@@ -7,7 +7,14 @@ export const postUsers = (req, res)=>{
 };
 
 export const putUsers = (req, res)=>{
-    res.send(`<h1>User:${req.params.id}</h1>`)
+    const {id} = req.params;
+    const {name, email} = req.body;
+
+    if(!name || !email){
+      return res.status(400).json({Error: 'Please enter name and email'});
+    }
+
+    res.json({Result: {id,name,email}});
 };
 
 export const deleteUsers = (req, res)=>{

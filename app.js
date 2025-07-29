@@ -14,8 +14,8 @@ app.use(express.urlencoded({extended: true}));
      
 app.use(loggerMiddleware);
 
-app.use('/', userRouter);
 app.use('/api/users', userRoutes); 
+app.use('/', userRouter);
 
 app.use((err, req, res, next)=>{
     console.error('Error:', err.message);
