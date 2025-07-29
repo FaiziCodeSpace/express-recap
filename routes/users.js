@@ -10,11 +10,11 @@ router.use((req, res, next)=>{
 })
 
 router.get('/userDetails', (req, res)=>{
-    res.json({Notice: 'Router Level Middleware Corner'});
+    res.json({ Notice: 'Router Level Middleware Corner' });
 })
 
 router.get('/crash', ()=>{
-    throw new Error('APP IS CRASHED!')
+    throw new Error('APP IS CRASHED!');
 })
 
 export default router;
