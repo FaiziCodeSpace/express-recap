@@ -1,6 +1,5 @@
 export const getUsers = (req, res)=>{
-    const userId = req.params.id;
-    res.json({message:`Json testing on page number: ${userId}`})
+    res.json({message:`Json testing`});
 };
 
 export const postUsers = (req, res)=>{

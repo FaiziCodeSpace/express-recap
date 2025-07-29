@@ -3,7 +3,7 @@ import { createProfile, deleteUsers, getProfile, getUsers, postUsers, putUsers }
 
 const router = Router();
 
-router.get('/:id', getUsers);
+router.get('/', getUsers);
 
 router.post('/data', postUsers);
 
