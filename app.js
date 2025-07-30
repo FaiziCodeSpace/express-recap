@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import userRoutes from "./routes/router.js";
 import { loggerMiddleware } from "./middleware/loggerMiddleware.js";
 import userRouter from "./routes/users.js";
+import uploadRoutes from "./routes/uploadRoutes.js"
 
 dotenv.config();
 
@@ -13,9 +14,9 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
      
 app.use(loggerMiddleware);
-
 app.use('/api/users', userRoutes); 
 app.use('/', userRouter);
+app.use('/api/upload', uploadRoutes);
 
 app.use((err, req, res, next)=>{
     console.error('Error:', err.message);
