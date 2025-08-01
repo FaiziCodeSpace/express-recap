@@ -1,10 +1,11 @@
-import { DataBase } from "../app.js";
+import { DataBase, loadData, saveData } from "../app.js";
 
 export const getUsers = (req, res)=>{
+  const db = loadData();
   const {id} = req.params;
-  const existUser = DataBase.find((user)=>user.id==id);
+  const existUser = db.find((user)=>user.id==id);
     if(existUser){
-      return res.json(existUser)
+      return res.json(existUser);
     }else if(!id){
       res.json(DataBase); 
     }
@@ -12,11 +13,13 @@ export const getUsers = (req, res)=>{
 };
 
 export const postUsers = (req, res)=>{
+    const db = loadData(); 
     const {name, password} = req.body;
-    const id = DataBase.length + 1;
+    const id = db.length + 1;
     const newUser = {id, name, password};
-    DataBase.push(newUser);
-    res.json(DataBase);
+    db.push(newUser);
+    saveData(db);
+    res.json(db);
 };
 
 
