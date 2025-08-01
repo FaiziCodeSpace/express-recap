@@ -12,6 +12,7 @@
   "description": "This project is a structured 3-day revision of Express.js fundamentals, covering core concepts like server setup, routing, middleware, validation, file uploads, authentication, and MongoDB integration, with practice projects included.",
   "dependencies": {
     "bcrypt": "^6.0.0",
+    "bcryptjs": "^3.0.2",
     "colors": "^1.4.0",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",

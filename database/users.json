@@ -1,12 +1,8 @@
 [
   {
     "id": 1,
-    "name": "Faizan",
-    "password": "anyPass"
-  },
-  {
-    "id": 2,
-    "name": "Faizan",
-    "password": "anyPass"
+    "name": "John Doe",
+    "email": "@gmail.com",
+    "hPass": "$2b$10$l4zYgE6Rv9VslkrO9LmzeOp/tBGbVwFPfpDuRcjCRYkJ8jTlvbuqS"
   }
 ]
