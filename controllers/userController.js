@@ -1,6 +1,7 @@
 import { loadData, saveData } from "../app.js";
 import bcrypt from "bcryptjs";
 import { jsonToken } from "../utils/jwtSign.js";
+import { validationResult } from "express-validator";
 
 export const getUsers = (req, res) => {
   const db = loadData();
@@ -14,6 +15,18 @@ export const getUsers = (req, res) => {
 };
 
 export const postUsers = async (req, res) => {
+  const validErrors = validationResult(req);
+  if(!validErrors.isEmpty()){
+    const errorBox = {};
+    validErrors.array().forEach((err)=>{
+        if (!errorBox[err.param]) {
+        errorBox[err.param] = [];
+      }
+      errorBox[err.param].push(err.msg);      
+    })
+    return res.json(errorBox);    
+  }
+  // ENDPOINT-LOGIC
   const db = loadData();
   const { name, email, password } = req.body;
   const hPass = await bcrypt.hash(password, 10);
@@ -21,7 +34,7 @@ export const postUsers = async (req, res) => {
   const newUser = { id, name, email, hPass };
   db.push(newUser);
   saveData(db);
-  res.json(newUser);
+  res.status(201).json(newUser);
 };
 
 export const login = async (req, res) => {
