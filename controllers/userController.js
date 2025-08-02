@@ -7,8 +7,8 @@ export const getUsers = (req, res) => {
   const { id } = req.params;
   const existUser = db.find((user) => user.id == id);
   if (existUser) {
-    const { name } = existUser;
-    return res.json({ id, name });
+    const { name, email, hPass } = existUser;
+    return res.json({ id, name, email, hPass });
   }
   res.status(404).json({ message: "User not found!" });
 };
