@@ -1,5 +1,5 @@
 import { body } from "express-validator";
-import { loadData } from "../app";
+import { loadData } from "../app.js";
 
 export const registerValidation = [
     body('name')
@@ -34,4 +34,3 @@ export const registerValidation = [
     .isEmail()
     .normalizeEmail().withMessage('Should be an email'),
 ]
-

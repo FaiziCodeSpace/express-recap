@@ -4,5 +4,11 @@
     "name": "John Doe",
     "email": "@gmail.com",
     "hPass": "$2b$10$l4zYgE6Rv9VslkrO9LmzeOp/tBGbVwFPfpDuRcjCRYkJ8jTlvbuqS"
+  },
+  {
+    "id": 2,
+    "name": "Peter",
+    "email": "hello1@gmail.com",
+    "hPass": "$2b$10$F9IklVMeaB.zGR7q3.G2NeSTYqH/ZaSPieOgLFWRKt0lYIWBFbHtW"
   }
 ]
