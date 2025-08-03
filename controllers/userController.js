@@ -1,6 +1,6 @@
 import { loadData, saveData } from "../app.js";
 import bcrypt from "bcryptjs";
-import { jsonToken } from "../utils/jwtSign.js";
+import { jsonRefreshToken, jsonToken } from "../utils/jwtSign.js";
 import { validationResult } from "express-validator";
 
 export const getUsers = (req, res) => {
@@ -46,7 +46,14 @@ export const login = async (req, res) => {
       return res.json({ Error: "User doesnot exist" });
     }
     const correctPass = await bcrypt.compare(password, userExist.hPass);
-    const token = await jsonToken(userExist.id);
+    
+    const token = jsonToken(userExist.id);
+    const refreshToken = jsonRefreshToken(userExist.id);
+    res.cookie("refreshToken", refreshToken, {
+      httpOnly: true,
+      maxAge: 7 * 24 * 60 * 60 * 1000
+    })
+
     if (!correctPass) {
       return res.json({ Error: "Password is not correct" });
     }
