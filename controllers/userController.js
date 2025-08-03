@@ -1,4 +1,5 @@
 import { loadData, saveData } from "../app.js";
+import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import { jsonRefreshToken, jsonToken } from "../utils/jwtSign.js";
 import { validationResult } from "express-validator";
@@ -62,3 +63,18 @@ export const login = async (req, res) => {
     console.log(err);
   }
 };
+
+
+// Refresh Token 
+export const refreshToken = (req, res) =>{
+    const refreshToken = req.cookie.refreshToken;
+    if(!refreshToken){ return res.json({Error: 'No Refresh Token'})};
+
+    try{
+      const decoded = jwt.verify(refreshToken, process.env.REFRESH_JWT_KEY);
+      const newAccessToken = jsonToken(decoded.id);
+      return res.json({accessToken: newAccessToken});
+    }catch(err){
+      return res.status(403).json({Error: "Invalid or Expired Refresh Token"});
+    }
+}; 
